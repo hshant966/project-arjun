@@ -1,4 +1,7 @@
-import { Viewer, Math as CesiumMath, Cartesian3, HeadingPitchRange, EllipsoidTerrainProvider } from 'cesium';
+import {
+  Viewer, Math as CesiumMath, Cartesian3, HeadingPitchRange,
+  EllipsoidTerrainProvider, UrlTemplateImageryProvider,
+} from 'cesium';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import './style.css';
 import { LayerManager } from './layers/LayerManager';
@@ -20,9 +23,10 @@ function setStatus(msg: string) {
 async function init() {
   setStatus('Loading Cesium engine...');
 
-  // Cesium viewer — no Ion token needed, flat terrain
+  // Cesium viewer with OpenStreetMap base layer (no Ion token needed)
   const viewer = new Viewer('cesiumContainer', {
     terrainProvider: new EllipsoidTerrainProvider(),
+    baseLayer: false, // Disable default Bing Maps (needs Ion token)
     animation: false,
     timeline: false,
     fullscreenButton: false,
@@ -38,12 +42,21 @@ async function init() {
     shouldAnimate: true,
   });
 
+  // Add OpenStreetMap as base imagery (free, no token needed)
+  viewer.imageryLayers.addImageryProvider(
+    new UrlTemplateImageryProvider({
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      credit: '© OpenStreetMap contributors',
+      maximumLevel: 18,
+    })
+  );
+
   // Disable default Cesium credit
   (viewer.cesiumWidget.creditContainer as HTMLElement).style.display = 'none';
 
-  // Set initial camera position over Maharashtra
+  // Set initial camera position over India
   viewer.camera.flyTo({
-    destination: Cartesian3.fromDegrees(75.7, 19.66, 800000),
+    destination: Cartesian3.fromDegrees(78.9, 20.6, 4000000),
     orientation: {
       heading: CesiumMath.toRadians(0),
       pitch: CesiumMath.toRadians(-45),
@@ -81,6 +94,29 @@ async function init() {
   // Load all layers
   setStatus('Loading data layers...');
   await layerManager.initialize();
+
+  // Auto-enable key layers so the user sees something immediately
+  setStatus('Activating intelligence layers...');
+  const defaultLayers = [
+    'live-air-traffic',
+    'satellite-constellation',
+    'gps-jamming',
+    'maritime-traffic',
+    'no-fly-zones',
+    'cross-border',
+    'nuclear-facilities',
+    'strategic-infrastructure',
+    'river-basin',
+    'power-grid',
+    'india-states',
+  ];
+  for (const id of defaultLayers) {
+    try {
+      await layerManager.enableLayer(id);
+    } catch (e) {
+      console.warn(`Could not enable layer ${id}:`, e);
+    }
+  }
 
   // Setup district drill-down click handler
   const districtLayer = layerManager.getLayer('maharashtra-districts') as MaharashtraDistrictsLayer;
