@@ -44,6 +44,15 @@ import { NoFlyZoneLayer } from './NoFlyZoneLayer';
 import { ShaderEffects, EffectType } from './ShaderEffects';
 import { TimelineReplay } from './TimelineReplay';
 import { PanopticMode } from './PanopticMode';
+// God's Eye — Extended intelligence layers (Priority 4)
+import { RealTimeDataBridge } from './RealTimeDataBridge';
+import { CrossBorderLayer } from './CrossBorderLayer';
+import { NuclearFacilitiesLayer } from './NuclearFacilitiesLayer';
+import { StrategicInfrastructureLayer } from './StrategicInfrastructureLayer';
+import { RiverBasinLayer } from './RiverBasinLayer';
+import { PowerGridLayer } from './PowerGridLayer';
+import { NightMode } from './NightMode';
+import { DataDensityOverlay } from './DataDensityOverlay';
 
 export class LayerManager {
   private viewer: Viewer;
@@ -97,6 +106,15 @@ export class LayerManager {
       GPSJammingLayer,
       MaritimeTrafficLayer,
       NoFlyZoneLayer,
+      // God's Eye — Extended intelligence layers (Priority 4)
+      RealTimeDataBridge,
+      CrossBorderLayer,
+      NuclearFacilitiesLayer,
+      StrategicInfrastructureLayer,
+      RiverBasinLayer,
+      PowerGridLayer,
+      NightMode,
+      DataDensityOverlay,
     ];
 
     // Add live data layer separately (different constructor)
