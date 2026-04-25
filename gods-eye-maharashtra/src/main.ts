@@ -109,6 +109,12 @@ async function init() {
     'river-basin',
     'power-grid',
     'india-states',
+    // Bilawal WorldView features — Phase 3
+    'osm-buildings',
+    'negative-space',
+    'particle-system',
+    'cctv-feeds',
+    'data-fusion',
   ];
   for (const id of defaultLayers) {
     try {

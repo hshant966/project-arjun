@@ -53,6 +53,14 @@ import { RiverBasinLayer } from './RiverBasinLayer';
 import { PowerGridLayer } from './PowerGridLayer';
 import { NightMode } from './NightMode';
 import { DataDensityOverlay } from './DataDensityOverlay';
+// Bilawal WorldView features — Phase 3
+import { OSMBuildingsLayer } from './OSMBuildingsLayer';
+import { EnhancedShaderEffects } from './EnhancedShaderEffects';
+import { NegativeSpaceIntelligence } from './NegativeSpaceIntelligence';
+import { ParticleSystemLayer } from './ParticleSystemLayer';
+import { CCTVFeedLayer } from './CCTVFeedLayer';
+import { TimelineScrubberUI } from './TimelineScrubberUI';
+import { MultiLayerDataFusion } from './MultiLayerDataFusion';
 
 export class LayerManager {
   private viewer: Viewer;
@@ -60,13 +68,16 @@ export class LayerManager {
   private layers: Map<string, BaseLayer> = new Map();
   // God's Eye visual effects
   public readonly shaderEffects: ShaderEffects;
+  public readonly enhancedShaderEffects: EnhancedShaderEffects;
   public readonly timeline: TimelineReplay;
   public readonly panoptic: PanopticMode;
+  public timelineScrubber: TimelineScrubberUI | null = null;
 
   constructor(viewer: Viewer, dataStore: DataStore) {
     this.viewer = viewer;
     this.dataStore = dataStore;
     this.shaderEffects = new ShaderEffects(viewer);
+    this.enhancedShaderEffects = new EnhancedShaderEffects(viewer);
     this.timeline = new TimelineReplay(viewer);
     this.panoptic = new PanopticMode(viewer);
   }
@@ -115,6 +126,12 @@ export class LayerManager {
       PowerGridLayer,
       NightMode,
       DataDensityOverlay,
+      // Bilawal WorldView features — Phase 3
+      OSMBuildingsLayer,
+      NegativeSpaceIntelligence,
+      ParticleSystemLayer,
+      CCTVFeedLayer,
+      MultiLayerDataFusion,
     ];
 
     // Add live data layer separately (different constructor)
@@ -133,6 +150,7 @@ export class LayerManager {
 
     // Initialize God's Eye visual effects
     this.shaderEffects.initialize();
+    this.enhancedShaderEffects.initialize();
 
     // Wire up PanopticMode to toggle layers
     this.panoptic.setLayerToggleCallback(async (layerIds: string[], enable: boolean) => {
@@ -144,6 +162,9 @@ export class LayerManager {
         }
       }
     });
+
+    // Initialize Timeline Scrubber UI (requires all layers to be registered)
+    this.timelineScrubber = new TimelineScrubberUI(this.viewer, this, this.dataStore);
   }
 
   getLayer(id: string): BaseLayer | undefined {
