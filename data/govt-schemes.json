@@ -1,0 +1,112 @@
+{
+  "schemes": [
+    {
+      "id": "pm-kisan",
+      "name": "PM-KISAN",
+      "fullName": "Pradhan Mantri Kisan Samman Nidhi",
+      "description": "₹6000/year income support to farmer families",
+      "ministry": "Agriculture",
+      "launchDate": "2019-02-24",
+      "maharashtra": {
+        "beneficiaries": 11000000,
+        "coverage": 78,
+        "totalDisbursed": "₹6600 Cr",
+        "issues": ["Land record discrepancies in Marathwada", "Aadhaar linking failures"]
+      }
+    },
+    {
+      "id": "mgnrega",
+      "name": "MGNREGA",
+      "fullName": "Mahatma Gandhi National Rural Employment Guarantee Act",
+      "description": "Guaranteed 100 days of wage employment to rural households",
+      "ministry": "Rural Development",
+      "launchDate": "2006-02-02",
+      "maharashtra": {
+        "beneficiaries": 8500000,
+        "coverage": 62,
+        "averageDaysEmployed": 48,
+        "issues": ["Delayed payments in 12 districts", "Below-target employment days"]
+      }
+    },
+    {
+      "id": "jal-jeevan",
+      "name": "Jal Jeevan Mission",
+      "fullName": "Jal Jeevan Mission - Har Ghar Jal",
+      "description": "Functional household tap water connection to every rural home",
+      "ministry": "Jal Shakti",
+      "launchDate": "2019-08-15",
+      "maharashtra": {
+        "targetHouseholds": 21000000,
+        "connectedHouseholds": 12180000,
+        "coverage": 58,
+        "issues": ["Marathwada & Vidarbha lagging behind", "Water source sustainability concerns"]
+      }
+    },
+    {
+      "id": "ayushman-bharat",
+      "name": "Ayushman Bharat",
+      "fullName": "Pradhan Mantri Jan Arogya Yojana",
+      "description": "₹5 lakh health insurance cover per family per year",
+      "ministry": "Health",
+      "launchDate": "2018-09-23",
+      "maharashtra": {
+        "beneficiaries": 13000000,
+        "coverage": 71,
+        "claimsSettled": 2800000,
+        "issues": ["Low awareness in rural areas", "Hospital empanelment gaps"]
+      }
+    },
+    {
+      "id": "ujjwala",
+      "name": "Ujjwala Yojana",
+      "fullName": "Pradhan Mantri Ujjwala Yojana",
+      "description": "Free LPG connections to women from BPL households",
+      "ministry": "Petroleum",
+      "launchDate": "2016-05-01",
+      "maharashtra": {
+        "beneficiaries": 7200000,
+        "coverage": 85,
+        "issues": ["Refill affordability concerns", "Switch back to biomass"]
+      }
+    },
+    {
+      "id": "swachh-bharat",
+      "name": "Swachh Bharat Mission",
+      "fullName": "Swachh Bharat Mission - Gramin",
+      "description": "Open Defecation Free India and solid waste management",
+      "ministry": "Jal Shakti",
+      "launchDate": "2014-10-02",
+      "maharashtra": {
+        "odfVillages": "100%",
+        "coverage": 96,
+        "issues": ["Usage verification needed", "ODF sustainability challenges"]
+      }
+    },
+    {
+      "id": "pm-awas",
+      "name": "PM Awas Yojana",
+      "fullName": "Pradhan Mantri Awas Yojana - Gramin",
+      "description": "Housing for All by 2022 - pucca house for every homeless family",
+      "ministry": "Rural Development",
+      "launchDate": "2016-04-01",
+      "maharashtra": {
+        "beneficiaries": 1800000,
+        "coverage": 68,
+        "issues": ["Land availability in urban areas", "Construction material cost escalation"]
+      }
+    },
+    {
+      "id": "ladki-bahin",
+      "name": "Mukhyamantri Majhi Ladki Bahin",
+      "fullName": "Mukhyamantri Majhi Ladki Bahin Yojana",
+      "description": "₹1500/month financial assistance to eligible women (Maharashtra state scheme)",
+      "ministry": "Women & Child Development (MH)",
+      "launchDate": "2024-07-01",
+      "maharashtra": {
+        "beneficiaries": 24000000,
+        "coverage": 82,
+        "issues": ["Budget allocation concerns", "Verification delays", "Political criticism"]
+      }
+    }
+  ]
+}
